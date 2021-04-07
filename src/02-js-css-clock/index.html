@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS CSS Clock</title>
 </head>
+
 <body>
   <div class="clock-border">
     <div class="clock-internal">
@@ -32,39 +34,72 @@
     .clock-border {
       width: 30rem;
       height: 30rem;
-      border: 10px solid white;
+      border: 5px solid white;
       border-radius: 50%;
       margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      /* let hand's width: 50% can correspond width here. */
       box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
+        0 0 0 4px rgba(0, 0, 0, 0.1),
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .hand {
-
+        0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .clock-internal {
-      
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px);
     }
 
-    .hour-hand {
-
+    .hand {
+      width: 50%;
+      height: 6px;
+      border-radius: 30px;
+      background-color: black;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
-    .min-hand {
+    .hour-hand {}
 
-    }
+    .min-hand {}
 
     .second-hand {
-
+      height: 3px;
+      background-color: coral;
     }
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
+    const minsHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
+
+    function runClock() {
+      const now = new Date();
+
+      const seconds = now.getSeconds();
+      const secondsDegrees = ((seconds / 60) * 360) + 90; // 先算一秒幾刻度，再 x 360 度 + 上面設定起始點時用到的 90 度
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      const mins = now.getMinutes();
+      const minsDegrees = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90; // 每秒都會稍微移動分針一點，而大概6秒會使分針前進一小刻
+      minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+      const hour = now.getHours();
+      const hourDegrees = ((hour / 12) * 360) + ((mins / 60) * 30) + 90; // 每分都會稍微移動時針一點，而大概30分鐘使時針前進半刻
+      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+
+    setInterval(runClock, 1000);
   </script>
 </body>
+
 </html>
