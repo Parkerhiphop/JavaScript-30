@@ -18,30 +18,55 @@
   ctx.lineCap = 'round';
   ctx.lineWidth = 100;
 
-  let isDrawing = false; // state management -> detect drawing or not
+  // state management
+  let isDrawing = false; // detect drawing or not
+  let hue = 0; // detect the line's color
+  let isLineOverScaled = true; // detect the line is too big or too small (1~100), and the initial value (100) is about to over
 
   // the ending coordinate of the last time
   // also the start coordinate of the next time
   let lastX = 0;
   let lastY = 0;
 
+
+
   function draw(e) {
+    if (!isDrawing) return;
+
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; // initialize stroke's color, saturation, lightness
     ctx.beginPath(); // generate the ctx path
     ctx.moveTo(lastX, lastY); // initialize your pen position
     ctx.lineTo(e.offsetX, e.offsetY); // draw a line to your mouse offset position
-    [lastX, lastY] = [e.offsetX, e.offsetY] // destructing syntax and set the next start position for your pen
     ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY] // destructing syntax and set the next start position for your pen
+
+    hue++; // add color when every mouse move -> colorful effect
+    // the range of hue -> 0~360
+    // reset the hue when it comes to maximum
+    if(hue >= 360) {
+      hue = 0;
+    }
+
+    // define the range of the ctx
+    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+      isLineOverScaled = !isLineOverScaled;
+    }
+
+    if(isLineOverScaled) {
+      ctx.lineWidth++; // Enlarge the ctx
+    } else {
+      ctx.lineWidth--;
+    }
   }
 
   // down -> set the lastX & lastY 
   canvas.addEventListener('mousedown', (e) => {
-    [lastX, lastY] = [e.offsetX, e.offsetY] // destructing syntax and set the next start position for your pen
-
     isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY] // destructing syntax and set the next start position for your pen
   }); // on mouse click down
 
   // move -> draw canvas
-  canvas.addEventListener('mousemove', (e) => isDrawing && draw(e)); // hover
+  canvas.addEventListener('mousemove', draw); // hover
 
   // up -> stop drawing
   canvas.addEventListener('mouseup', () => isDrawing = false); // on mouse click up
