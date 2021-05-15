@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+
+<script>
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  ctx.strokeStyle = '#BACA55';
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 100;
+
+  let isDrawing = false; // state management -> detect drawing or not
+
+  // the ending coordinate of the last time
+  // also the start coordinate of the next time
+  let lastX = 0;
+  let lastY = 0;
+
+  function draw(e) {
+    ctx.beginPath(); // generate the ctx path
+    ctx.moveTo(lastX, lastY); // initialize your pen position
+    ctx.lineTo(e.offsetX, e.offsetY); // draw a line to your mouse offset position
+    [lastX, lastY] = [e.offsetX, e.offsetY] // destructing syntax and set the next start position for your pen
+    ctx.stroke();
+  }
+
+  // down -> set the lastX & lastY 
+  canvas.addEventListener('mousedown', (e) => {
+    [lastX, lastY] = [e.offsetX, e.offsetY] // destructing syntax and set the next start position for your pen
+
+    isDrawing = true;
+  }); // on mouse click down
+
+  // move -> draw canvas
+  canvas.addEventListener('mousemove', (e) => isDrawing && draw(e)); // hover
+
+  // up -> stop drawing
+  canvas.addEventListener('mouseup', () => isDrawing = false); // on mouse click up
+
+  // out -> stop drawing
+  canvas.addEventListener('mouseout', () => isDrawing = false); // leave window
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+</style
+
+</body>
+</html>
