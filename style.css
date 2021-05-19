@@ -1,0 +1,31 @@
+body {
+  background-color: var(--primary);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+a {
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  height: 250px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: var(--secondary);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-wrap: break-word;
+  text-decoration: none;
+  outline: none;
+  font-size: 20px;
+  color: var(--primary);
+}
+
+a:link:active:hover:visited {
+  text-decoration: none;
+}
