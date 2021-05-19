@@ -1,12 +1,28 @@
 html {
-  font-family: sans-serif;
-  background: #ffc600;
+  background: var(--primary);
+}
+
+.title {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+h1,h2 {
+  color: var(--secondary);
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 
 .inbox {
   max-width: 400px;
-  margin: 80px auto;
-  background-color: #fff;
+  margin: 50px auto;
+  background-color: var(--secondary);
   border-radius: 5px;
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
 }
