@@ -1,14 +1,3 @@
-/* todo: Change the Overall Font size and Back to home feature */
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-
-  --primary: #364a6f;
-  --secondary: #c8b289;
-}
-
 .back-home {
   position: absolute;
   top: 0;
