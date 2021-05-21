@@ -4,9 +4,6 @@ const secretCode = 'unicorn'; // length = 7
 function detector(e) {
   pressedKeys.push(e.key);
 
-  console.log(-secretCode.length - 1);
-  console.log(pressedKeys.length - secretCode.length);
-
   // limit the pressedKeys length to 7
   // splice(i, n, value?) -> 從 index=i 的地方刪掉 n 個值，有的話再插入 value
   // 概念為 if pressedKeys.length === secretCode 時，把值加進來擠掉第一個值
@@ -20,13 +17,11 @@ function detector(e) {
   // pressedKeys 到達 8 個時， pressedKeys - secretCode(7) 才會餘 1
   // 也因此才會刪掉一個值
   pressedKeys.splice(-secretCode.length - 1, pressedKeys.length - secretCode.length);
-  console.log(pressedKeys);
 
   if (pressedKeys.join('').includes(secretCode)) {
     console.log('DING DING!');
     cornify_add();
   }
-  console.log(pressedKeys);
 }
 
 window.addEventListener('keyup', (e) => detector(e));
