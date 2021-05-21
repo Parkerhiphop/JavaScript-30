@@ -9,16 +9,16 @@
 <body>
   <script src="../../core/backHome.js"></script>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+  <div class="title" console>
+    <h1>Dev Tools Domination</h1>
+    <h2>Open DevTools to See Console</h2>
+    For Mac is "Option" + "Command" + "I"
+    For Windows is "F11"
+  </div>
+
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
-
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
 
     // see chrome's console API: https://developer.chrome.com/docs/devtools/console/api/
 

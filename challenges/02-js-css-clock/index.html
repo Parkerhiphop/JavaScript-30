@@ -11,17 +11,23 @@
 </head>
 <body>
   <script src="../../core/backHome.js"></script>
-  <div class="clock-border">
-    <div class="clock-internal">
-      <div class="hand hour-hand"></div>
-      <div class="hand min-hand"></div>
-      <div class="hand second-hand"></div>
+
+  <div class="title">
+    <h1>JS-CSS Clock</h1>
+  </div>
+
+  <div class="clock-container">
+    <div class="clock-border">
+      <div class="clock-internal">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
     </div>
   </div>
 
   <style>
     html {
-      font-size: 10px;
       background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
       background-size: cover;
     }
@@ -29,6 +35,10 @@
     body {
       min-height: 100vh;
       margin: 0;
+    }
+
+    .clock-container {
+      height: calc(100% - 101px);
       display: flex;
       align-items: center;
     }
@@ -67,10 +77,6 @@
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
-
-    .hour-hand {}
-
-    .min-hand {}
 
     .second-hand {
       height: 3px;

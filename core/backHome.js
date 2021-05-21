@@ -1,6 +1,6 @@
 let backButton = document.createElement('a');
 
-backButton.setAttribute('href', '/');
+backButton.setAttribute('href', '/javaScript30');
 backButton.classList.add('back-home');
 backButton.text = 'Back Home';
 

@@ -74,3 +74,14 @@ span.population {
 .hl {
   background: #ffc600;
 }
+
+.toTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+  color: var(--primary);
+  background: var(--secondary);
+  padding: 20px;
+  border-radius: 50%;
+}
