@@ -1,0 +1,46 @@
+.content {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px 40px;
+  border-radius: 3px;
+  background-color: var(--secondary);
+  text-align: justify;
+}
+
+p {
+  font-size: 20px;
+  margin: 20px;
+  color: var(--primary);
+}
+
+.align-left {
+  float: left;
+  margin-right: 20px;
+}
+
+.align-right {
+  float: right;
+  margin-left: 20px;
+}
+
+.slide-in {
+  opacity: 0;
+  /* 所有的變動都會有 0.5 秒的鍵入特效，這裡是滑入、微放大跟轉換透明度 */
+  transition: all .5s;
+}
+
+/* 先讓照片偏移，待會才能讓他們滑進來 */
+.align-left.slide-in {
+  /* 左移 30% + 縮小成 0.95 倍 */
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide-in {
+  transform: translateX(30%) scale(0.95);
+}
+
+/* 滑入＆放大 */
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
