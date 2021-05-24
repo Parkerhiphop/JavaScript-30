@@ -1,0 +1,103 @@
+html {
+  background: url("oh-la-la.jpeg") center no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+svg {
+  fill: white;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 50%;
+  width: 200px;
+  margin: 50px;
+}
+
+.title>h1, .title>h2  {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.wrapper {
+  border-radius: 3px;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
+}
+
+.add-items {
+  margin: 20px 0px;
+  display: flex;
+  gap: 10px;
+}
+
+.add-items input {
+  padding: 10px;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  flex: 3;
+}
+
+input[type="submit"] {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+button {
+  flex-basis: 100%;
+  display: inline-block;
+  padding: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.item-list {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+/* Add it by JS */
+.item-list li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  font-weight: 100;
+  display: flex;
+}
+
+.item-list label {
+  flex: 1;
+  cursor: pointer;
+}
+
+.item-list input {
+  display: none;
+}
+
+.item-list input + label:before {
+  content: "⬜️";
+  margin-right: 10px;
+}
+
+.item-list input:checked + label:before {
+  content: "🌮";
+}
