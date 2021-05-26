@@ -27,7 +27,6 @@ function addItem(e) {
 
 function populateList(plates = [], platesList) {
   platesList.innerHTML = plates.map((plate, i) => {
-    console.log('plate', plate);
     return `
       <li>
         <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
