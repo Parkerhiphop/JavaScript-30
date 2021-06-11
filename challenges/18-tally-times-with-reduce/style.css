@@ -1,0 +1,23 @@
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 20px 0 0 0;
+}
+
+li {
+  width: 150px;
+  height: 100px;
+  padding: 20px;
+  margin: 20px;
+  border: solid 1px var(--secondary);
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-wrap: break-word;
+  font-size: 20px;
+  color: var(--secondary);
+}
